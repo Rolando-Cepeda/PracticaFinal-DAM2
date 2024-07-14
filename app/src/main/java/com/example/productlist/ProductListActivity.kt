@@ -1,9 +1,14 @@
 package com.example.productlist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.example.productlist.databinding.ActivityProductListBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -40,7 +45,16 @@ class ProductListActivity : AppCompatActivity() {
 
     //Esta función nos devolverá el contenido de la API
     private fun searchByName(query: String) {
-
+        // Cuando busquemos, nuestro Retrofit , va a hacer la llamada a traves de la CoroutineScope
+        // El IO es para cuando vayamos a hacer procesos MUY largos(peticiones de red, guardar en base de datos)
+        CoroutineScope(Dispatchers.IO).launch {
+            val myResponse: Response<ProductDataResponse> = retrofit.create(ApiService::class.java).getProducts(query)
+            if(myResponse.isSuccessful){
+                Log.i("rolan","funciona")
+            }else{
+                Log.i("rolan", "No funciona")
+            }
+        }
     }
 
     //OBJETO RETROFIT para hacer las llamadas
