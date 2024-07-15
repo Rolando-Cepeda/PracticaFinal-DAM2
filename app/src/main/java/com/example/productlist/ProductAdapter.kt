@@ -4,13 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductAdapter(var productList: List<ProductItemResponse> = emptyList()) :
+// El ADAPTER recibirá también una funcion lambda
+class ProductAdapter(
+    var productList: List<ProductItemResponse> = emptyList(),
+    private val onItemSelected: (String) -> Unit
+) :
     RecyclerView.Adapter<ProductViewHolder>() {
 
-      fun updateList(list: List<ProductItemResponse>){
-          productList = list
-          notifyDataSetChanged()
-      }
+    fun updateList(list: List<ProductItemResponse>) {
+        productList = list
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,9 +27,9 @@ class ProductAdapter(var productList: List<ProductItemResponse> = emptyList()) :
     // override fun getItemCount() = productList.size
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val item = productList[position]
-        holder.bind(item)
-        //holder.bind(productList[position])
-        //
+        /*val item = productList[position]
+        holder.bind(item) */
+        holder.bind(productList[position], onItemSelected)
+
     }
 }

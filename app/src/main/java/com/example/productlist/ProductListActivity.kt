@@ -1,11 +1,13 @@
 package com.example.productlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.productlist.DetailProductActivity.Companion.EXTRA_ID
 import com.example.productlist.databinding.ActivityProductListBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,8 +47,9 @@ class ProductListActivity : AppCompatActivity() {
                 return false
             }
         })
-
-        adapter = ProductAdapter()
+        //Como hemos puesto la función LAMBDA, aqui le pasaremos ese bloque de código que contiene la misma MIN 1h.55
+        // adapter = ProductAdapter{productId -> navigateToDetail(productId)}
+        adapter = ProductAdapter { navigateToDetail(it) }
         binding.rvProduct.setHasFixedSize(true)
         binding.rvProduct.layoutManager = LinearLayoutManager(this)
         binding.rvProduct.adapter = adapter
@@ -95,5 +98,12 @@ class ProductListActivity : AppCompatActivity() {
             .baseUrl("https://dummyjson.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()*/
+    }
+
+    //Con esta función navegaremos a la pantalla Detail a traves del ID con una FUNCION LAMBDA
+    private fun navigateToDetail(id: String) {
+        val intent = Intent(this, DetailProductActivity::class.java)
+        intent.putExtra(EXTRA_ID, id)
+        startActivity(intent)
     }
 }
