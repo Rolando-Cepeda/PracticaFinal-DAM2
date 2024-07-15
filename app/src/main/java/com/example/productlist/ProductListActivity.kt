@@ -61,7 +61,7 @@ class ProductListActivity : AppCompatActivity() {
         // El IO es para cuando vayamos a hacer procesos MUY largos(peticiones de red, guardar en base de datos)
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<ProductDataResponse> =
-                retrofit.create(ApiService::class.java).getAllProducts()
+                retrofit.create(ApiService::class.java).getAllProducts(query)
             if (myResponse.isSuccessful) {
                 Log.i("rolan", "funciona")
                 //dentro del body es donde está la respuesta

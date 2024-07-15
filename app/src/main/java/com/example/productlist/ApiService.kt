@@ -3,6 +3,7 @@ package com.example.productlist
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 // No se mete CÓDIGO, metemos como el CONTRATO(le decimos que llamadas va a hacer implementando esta interfaz.)
@@ -13,6 +14,6 @@ interface ApiService {
     @GET("/products/{id}") // Especificamos la ruta del GETPOINT
     suspend fun getProducts(@Path("id") productId: String) : Response<ProductDataResponse>
 
-    @GET("products")
-    suspend fun getAllProducts(): Response<ProductDataResponse>
+    @GET("products/search")
+    suspend fun getAllProducts(@Query("q") query: String): Response<ProductDataResponse>
 }
