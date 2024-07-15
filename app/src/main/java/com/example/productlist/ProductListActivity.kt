@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productlist.databinding.ActivityProductListBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,8 @@ class ProductListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductListBinding
 
     private lateinit var retrofit: Retrofit
+
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,11 @@ class ProductListActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        adapter = ProductAdapter()
+        binding.rvProduct.setHasFixedSize(true)
+        binding.rvProduct.layoutManager = LinearLayoutManager(this)
+        binding.rvProduct.adapter = adapter
     }
 
     //Esta función nos devolverá el contenido de la API
