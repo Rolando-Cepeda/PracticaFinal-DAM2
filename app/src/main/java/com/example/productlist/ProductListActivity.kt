@@ -69,6 +69,7 @@ class ProductListActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("rolan", response.toString())
                     runOnUiThread {
+                        //adapter.updateList(response.id)
                         binding.progressBar.isVisible = false
                     }
 
