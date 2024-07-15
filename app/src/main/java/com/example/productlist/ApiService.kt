@@ -11,5 +11,8 @@ interface ApiService {
     //Especificamos el tipo de llamada que vamos a hacer
 
     @GET("/products/{id}") // Especificamos la ruta del GETPOINT
-    suspend fun getProducts(@Path("id") productTitle: String) : Response<ProductDataResponse>
+    suspend fun getProducts(@Path("id") productId: String) : Response<ProductDataResponse>
+
+    @GET("/products")
+    suspend fun getAllProducts(): Response<List<ProductDataResponse>>
 }

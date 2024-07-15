@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import com.example.productlist.databinding.ActivityProductListBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,13 +46,27 @@ class ProductListActivity : AppCompatActivity() {
 
     //Esta función nos devolverá el contenido de la API
     private fun searchByName(query: String) {
+        //Mostramos el ProgressBar
+        binding.progressBar.isVisible = true
+
         // Cuando busquemos, nuestro Retrofit , va a hacer la llamada a traves de la CoroutineScope
         // El IO es para cuando vayamos a hacer procesos MUY largos(peticiones de red, guardar en base de datos)
         CoroutineScope(Dispatchers.IO).launch {
-            val myResponse: Response<ProductDataResponse> = retrofit.create(ApiService::class.java).getProducts(query)
-            if(myResponse.isSuccessful){
-                Log.i("rolan","funciona")
-            }else{
+            val myResponse: Response<ProductDataResponse> =
+                retrofit.create(ApiService::class.java).getProducts(query)
+            if (myResponse.isSuccessful) {
+                Log.i("rolan", "funciona")
+                //dentro del body es donde está la respuesta
+                val response: ProductDataResponse? = myResponse.body()
+                if (response != null) {
+                    Log.i("rolan", response.toString())
+                    runOnUiThread {
+                        binding.progressBar.isVisible = false
+                    }
+
+                }
+
+            } else {
                 Log.i("rolan", "No funciona")
             }
         }

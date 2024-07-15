@@ -3,6 +3,22 @@ package com.example.productlist
 import com.google.gson.annotations.SerializedName
 
 // eSTA DATA CLASS será la respuesta a la llamada.
-data class ProductDataResponse (
-    // @SerializedName("products").- Hará referencia al nombre tal y com está en el JSON
-    @SerializedName("products") val products: String)
+data class ProductDataResponse(
+    // @SerializedName().- Hará referencia al nombre tal y com está en el JSON
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("price") val price: Double
+)
+
+/* data class ProductDataResponse(
+    //.- Hará referencia al nombre tal y com está en el JSON
+    @SerializedName("products") val products: List<ProductItemResponse>
+)
+
+data class ProductItemResponse(
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("price") val price: Double
+) */
