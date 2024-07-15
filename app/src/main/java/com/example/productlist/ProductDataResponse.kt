@@ -20,5 +20,7 @@ data class ProductItemResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("description") val description: String,
-    @SerializedName("price") val price: Double
+    @SerializedName("price") val price: Double,
+    //Al ser una lista de imágenes le ponemos List<String>
+    @SerializedName("images") val images: List<String>
 )
