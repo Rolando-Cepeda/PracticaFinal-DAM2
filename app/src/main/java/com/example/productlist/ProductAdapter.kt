@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductAdapter(var productList: List<ProductDataResponse> = emptyList()) :
+class ProductAdapter(var productList: List<ProductItemResponse> = emptyList()) :
     RecyclerView.Adapter<ProductViewHolder>() {
 
-      fun updateList(list: List<ProductDataResponse>){
+      fun updateList(list: List<ProductItemResponse>){
           productList = list
           notifyDataSetChanged()
       }

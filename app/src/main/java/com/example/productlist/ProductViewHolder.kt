@@ -8,7 +8,7 @@ class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemProductBinding.bind(view)
 
-    fun bind(productDataResponse: ProductDataResponse) {
+    fun bind(productDataResponse: ProductItemResponse) {
         binding.tvProductName.text = productDataResponse.title
     }
 }

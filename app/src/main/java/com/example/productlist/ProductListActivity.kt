@@ -61,7 +61,7 @@ class ProductListActivity : AppCompatActivity() {
         // El IO es para cuando vayamos a hacer procesos MUY largos(peticiones de red, guardar en base de datos)
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<ProductDataResponse> =
-                retrofit.create(ApiService::class.java).getProducts(query)
+                retrofit.create(ApiService::class.java).getAllProducts()
             if (myResponse.isSuccessful) {
                 Log.i("rolan", "funciona")
                 //dentro del body es donde está la respuesta
@@ -69,7 +69,7 @@ class ProductListActivity : AppCompatActivity() {
                 if (response != null) {
                     Log.i("rolan", response.toString())
                     runOnUiThread {
-                        //adapter.updateList(response.id)
+                        adapter.updateList(response.products)
                         binding.progressBar.isVisible = false
                     }
 
