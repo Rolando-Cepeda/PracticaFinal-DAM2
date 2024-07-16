@@ -3,6 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    //Color Pantalla Inicio
+    <color name="startingScreen">#FF9800</color> <!-- Color de fondo de la pantalla -->
+    <color name="buttonBackground">#FF0000</color> <!-- Color de fondo del botón -->
+    <color name="primaryText1">#FFFFFF</color> <!-- Color del texto del botón -->
+
+//Color pantalla detalle
     <color name="cardBackground">#FFFFFF</color>
     <color name="primaryText">#000000</color>
     <color name="secondaryText">#757575</color>
