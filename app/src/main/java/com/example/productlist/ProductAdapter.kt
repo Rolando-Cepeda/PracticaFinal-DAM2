@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 // El ADAPTER recibirá también una funcion lambda
 class ProductAdapter(
-    var productList: List<ProductItemResponse> = emptyList(),
+    var productList: List<ProductDetailResponse> = emptyList(),
     private val onItemSelected: (String) -> Unit
 ) :
     RecyclerView.Adapter<ProductViewHolder>() {
 
-    fun updateList(list: List<ProductItemResponse>) {
+    fun updateList(list: List<ProductDetailResponse>) {
         productList = list
         notifyDataSetChanged()
     }

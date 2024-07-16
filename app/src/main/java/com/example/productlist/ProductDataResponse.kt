@@ -13,14 +13,15 @@ import com.google.gson.annotations.SerializedName
 
 data class ProductDataResponse(
     //.- Hará referencia al nombre tal y como está en el JSON
-    @SerializedName("products") val products: List<ProductItemResponse>
+    @SerializedName("products") val products: List<ProductDetailResponse>
 )
 
-data class ProductItemResponse(
+/*data class ProductItemResponse(
     @SerializedName("id") val productId: Int,
     @SerializedName("title") val title: String,
     //@SerializedName("description") val description: String,
-    //@SerializedName("price") val price: Double,
+    @SerializedName("price") val price: Double,
     //Al ser una lista de imágenes le ponemos List<String>
     @SerializedName("images") val images: List<String>
 )
+*/

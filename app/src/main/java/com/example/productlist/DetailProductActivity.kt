@@ -3,6 +3,7 @@ package com.example.productlist
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.productlist.databinding.ActivityDetailProductBinding
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,7 +41,21 @@ class DetailProductActivity : AppCompatActivity() {
 
     //Este método nos creará la vista
     private fun createUI(product: ProductDetailResponse) {
+        Picasso.get().load(product.images[0]).into(binding.ivProductImageDetail)
+        // Asignar el título al TextView correspondiente
+        binding.tvTitle.text = product.title
 
+        // Asignar la descripción al TextView correspondiente
+        binding.tvDescription.text = product.description
+
+        // Asignar la categoría al TextView correspondiente
+        binding.tvCategory.text = product.category
+
+        // Asignar el precio al TextView correspondiente
+        binding.tvPrice.text = "€${product.price}"
+
+        // Asignar el stock al TextView correspondiente
+        binding.tvStock.text = "Stock: ${product.stock}"
     }
 
     //Creamos el retrofit.

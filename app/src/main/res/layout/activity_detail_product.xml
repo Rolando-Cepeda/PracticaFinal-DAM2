@@ -26,7 +26,7 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/ivProductImage"
+                android:id="@+id/ivProductImageDetail"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
@@ -41,7 +41,8 @@
                 android:textStyle="bold"
                 android:textColor="@color/primaryText"
                 android:layout_marginTop="16dp"
-                tools:text="Essence Mascara Lash Princess"/>
+                tools:text="Essence Mascara Lash Princess"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:id="@+id/tvCategory"
