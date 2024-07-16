@@ -21,6 +21,7 @@ class ProductListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductListBinding
 
+    //Creamos una variable, ya que vamos a hacer muchas búsquedas
     private lateinit var retrofit: Retrofit
 
     private lateinit var adapter: ProductAdapter
