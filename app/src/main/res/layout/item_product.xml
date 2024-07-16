@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_margin="20dp"
     android:elevation="4dp"
     android:padding="16dp"
     app:cardCornerRadius="8dp"
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="14sp"
-            android:text="Descripción del Producto"
+            tool:text="Descripción del Producto"
             android:gravity="center" /> <!-- Centra el texto dentro del TextView -->
 
     </LinearLayout>

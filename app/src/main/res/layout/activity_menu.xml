@@ -39,10 +39,11 @@
         android:layout_marginTop="25dp"
         android:text="Click"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/startingScreen"
         android:backgroundTint="@color/black"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:drawableEnd="@drawable/ic_click"/>
 
 </LinearLayout>

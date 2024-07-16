@@ -1,8 +1,11 @@
 package com.example.productlist
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -30,6 +33,7 @@ class ProductListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupSearchView()
         retrofit = getRetrofit() // Para hacer las LLAMADAS debemos llamar a retrofit.
         initUI()
     }
@@ -106,5 +110,23 @@ class ProductListActivity : AppCompatActivity() {
         val intent = Intent(this, DetailProductActivity::class.java)
         intent.putExtra(EXTRA_ID, id)
         startActivity(intent)
+    }
+
+    //Creamos un método y cambiamos el icono y las letras de color blanco del SearchView
+    private fun setupSearchView() {
+        val searchView: SearchView = binding.searchView
+        searchView.queryHint = "Escribe el nombre del producto" // Añadir el hint
+
+        val searchEditText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+        searchEditText.setTextColor(Color.WHITE)
+        searchEditText.setHintTextColor(Color.GRAY) // O el color que prefieras
+
+        // Cambia el color del icono de búsqueda
+        val searchIcon = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.WHITE)
+
+        // Cambia el color del icono de cerrar (clear)
+        val closeIcon = searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
+        closeIcon.setColorFilter(Color.WHITE)
     }
 }
